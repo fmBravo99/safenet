@@ -15,8 +15,6 @@ export default nextConfig;
 
 
 import type { NextConfig } from "next";
-import fs from "node:fs";
-import path from "node:path";
 
 const nextConfig: NextConfig = {
   allowedDevOrigins: [

@@ -165,10 +165,9 @@ export default function JourneysPage() {
 
     const journeyId = activeJourney.id;
 
-  if (!window.isSecureContext || !navigator.geolocation) {
-
-      setJourneyMessage(
-        "Your journey is active, but location tracking requires HTTPS and browser geolocation."
+    if (!window.isSecureContext || !navigator.geolocation) {
+      console.error(
+        "Location tracking requires HTTPS and browser geolocation."
       );
       return;
     }
@@ -183,9 +182,7 @@ export default function JourneysPage() {
     let lastSaveAttemptAt = 0;
     let isSaving = false;
 
-    setJourneyMessage(
-      "Journey active. Waiting for your location..."
-    );
+
 
     async function saveLatestPosition() {
       if (!isCurrent || !latestPosition || isSaving) return;
@@ -318,6 +315,13 @@ export default function JourneysPage() {
     event.preventDefault();
 
     if (isStarting || isLoadingJourney || activeJourney) return;
+
+    if (!window.isSecureContext || !navigator.geolocation) {
+      setJourneyMessage(
+        "Location tracking requires HTTPS and browser geolocation. Open SAFENET using a supported secure connection."
+      );
+      return;
+    }
 
     setIsStarting(true);
     setJourneyMessage("Checking your sign-in...");

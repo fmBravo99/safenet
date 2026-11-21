@@ -128,7 +128,7 @@ export default function AuthPage() {
           <div className="mt-6 text-center text-sm text-slate-500">
             {mode === "login" ? (
               <p>
-                Don't have an account?{" "}
+                Don&apos;t have an account?{" "}
                 <button
                   type="button"
                   onClick={() => setMode("signup")}
